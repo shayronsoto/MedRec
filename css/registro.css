@@ -1,0 +1,26 @@
+header{
+	background-color: #20B7FF;
+	padding: 0 0 0 0;
+	height: 110px;
+	margin: 0 0 0 0;
+	
+}
+header .text{
+	float: left;
+	color: white;	
+}
+header h3{
+	font-size: 30pt;
+}
+header h5{
+	font-size: 15pt;
+}
+header img{
+	margin-top: 5px;
+	width: 90px;
+	height:90px;
+	float: left;
+}
+.texto{
+	font-family:'Open Sans', sans-serif;
+}

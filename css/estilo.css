@@ -1,0 +1,54 @@
+
+
+header{
+	background-color: #20B7FF;
+	padding: 0 0 0 0;
+	height: 110px;
+	margin: 0 0 0 0;
+	
+}
+header .text{
+	float: left;
+	color: white;	
+}
+header h3{
+	font-size: 30pt;
+}
+header h5{
+	font-size: 15pt;
+}
+header img{
+	margin-top: 5px;
+	width: 90px;
+	height:90px;
+	float: left;
+}
+footer{
+	margin-top: 150px;
+	text-align: center;
+	height: 50px;
+}
+
+.login{
+	margin-top: 100px;
+	text-align: center;
+}
+.login input,button {
+	margin-top:15px; 
+	text-align: center;
+}
+.login button{
+	background-color: #20B7FF;
+	border-radius: 0 0 0 0;
+	border:none;
+	color: white;
+	width: 100px;
+}
+.login button:hover{
+	background-color: #FF8B17;
+	color: white;
+}
+.texto{
+	font-family:'Open Sans', sans-serif;
+}
+
