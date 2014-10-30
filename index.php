@@ -1,4 +1,5 @@
 <?php 
+
 require('inc/conexion.php');
 	#crear automaticamente el codigo del medico
 	$consulta="SELECT count(cod_medico), max(cod_medico) FROM usuario";
@@ -10,7 +11,7 @@ require('inc/conexion.php');
 		$max=$resul['1'];
 
 		if ($count=='0') {
-			$var='00001';
+			$var='27811';
 			
 		}
 		else
@@ -44,24 +45,24 @@ require('inc/conexion.php');
 				</div>
 				<div class="text col-xs-8 col-xs-offset-2 hidden-ms">
 					<h3 class="texto">MedRec</h3>
-					<h5 class="texto">Medical Record</h5
+					<h5 class="texto">Medical Record</h5>
 				</div>
 				
 			</div>
 		</div>
 	</header>
-	
+
 
 	
 		<div class="container login">
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-4">
 					<h2 class="texto">Usuario</h2>
-					<form class="form" action="" method="POST">
-						<input class="form-control" type="email" placeholder="Correo Electronico">
-						<input class="form-control" type="password" placeholder="Contraseña">
+					<form class="form" action="inc/login.php" method="POST">
+						<input name="usuario" class="form-control" type="text" placeholder="Correo Electronico o Telefono">
+						<input name="contrasena" class="form-control" type="password" placeholder="Contraseña">
 						<button class="btn btn-default">Ingresar</button>
-						<h5><a type="submit" name="reg"data-toggle="modal" href="#registrar">registrar</a></h5>
+						<h5><a type="submit" name="reg"data-toggle="modal" href="#registrar">Registrate</a></h5>
 
 					</form>
 					
