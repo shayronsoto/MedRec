@@ -32,7 +32,7 @@ require('inc/conexion.php');
 	<link rel="stylesheet" href="css/estilo.css">
 	<link href="css/jquery-ui.css" rel="stylesheet">
 	<link href="css/dataTables.min.css" rel="stylesheet">	
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+	<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>-->
 </head>
 <body>
 	<header>
@@ -53,7 +53,6 @@ require('inc/conexion.php');
 	</header>
 
 
-	
 		<div class="container login">
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-4">
@@ -93,7 +92,7 @@ require('inc/conexion.php');
 						<label for="">Telefono</label>
 						<input type="number" class="form-control" name="telefono" id="" maxlength="8">
 						<label for="">Especialidad</label>
-						<select class="form-control" name="especialidad" id="">
+						<select type="text" class="form-control" name="especialidad" id="">
 							<option value=""></option>
 							<option value="">Ginecologia</option>
 							<option value="">Pediatria</option>
