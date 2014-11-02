@@ -16,10 +16,10 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link href="css/jquery-ui.css" rel="stylesheet">
 	<link href="css/dataTables.min.css" rel="stylesheet">	
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+	<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>-->
 </head>
 <body>
-<header>
+<header style="heigth=150px">
 	<div class="container">
 		<div class="row">
 			<div class="text col-sm-6 ">
@@ -32,23 +32,33 @@
 	</div>
 	<nav class="navbar navbar-default" role="navigation" >
 		<div class="container-fluid">
+
 			<div class="navbar-header">
+				
+				<a href="" class="navbar-brand" class="dropdown-toggle" data-toggle="dropdown">
+					<span class="glyphicon glyphicon-user"></span>
+					<?php 
+						echo " "." ".$_SESSION['nombre'];
+					?>
+					<span class="caret"></span>
+				</a>
+
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="">Mi Informacion</a></li>
+					<li><a href="inc/logout.php">Cerrar Sesión</a></li>
+				</ul>
+
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="">
-					<?php 
-						echo "Bienvenido "." ".$_SESSION['nombre'];
-					?>
-				</a>
+				
 			</div>
 			
 			<div class="collapse navbar-collapse" id="menu">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Mi perfil</a></li>
 					<li class="active"><a href="#">Expediente</a></li>
 					<li><a href="#">Consulta</a></li>
 					<li><a href="#">Cita</a></li>
@@ -60,6 +70,14 @@
 </header>
 <br>
 <br>
+
+<div class="container">
+	<div class="row">
+		<button class="btn btn-primary">Ingresar Nuevo</button>
+	</div>
+</div>
+
+
 <div class="table-responsive">
 	<table class="table table-hover">
 		<thead>
@@ -69,7 +87,7 @@
 				<th>2do Apellido</th>
 				<th>1er Nombre</th>
 				<th>2do Nombre</th>
-				<th>Opciones</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -83,7 +101,7 @@
 				<td><?php echo $fila['segundo_apellido']; ?></td>
 				<td><?php echo $fila['primer_nombre']; ?></td>
 				<td><?php echo $fila['segundo_nombre']; ?></td>
-				<td><a  class="glyphicon glyphicon-pencil" title="Modificar" href=""></a> | <a class="glyphicon glyphicon-remove" title="Eliminar" href=""></a></td>
+				<td><a class="btn btn-primary" title="Modificar" href=""><span class="glyphicon glyphicon-pencil"></span></a> <a class="btn btn-primary" title="Eliminar" href=""><span class="glyphicon glyphicon-remove"></span></a> <a class="btn btn-primary" title="Ver" href=""><span class="glyphicon glyphicon-search"></span></a></td>
 			</tr>
 		<?php }?>
 			
