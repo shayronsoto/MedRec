@@ -80,7 +80,7 @@ require('inc/conexion.php');
 					<h3 class="modal-title">Registrate</h3>
 				</div>
 				<div class="modal-body">
-					<form action="inc/guardar.php" method="POST" role="form">
+					<form class="form" action="inc/guardar.php" method="POST" role="form">
 						<label for="">Codigo</label>
 						<input type="text" class="form-control " name="codigo" maxlength="5" value="<?php echo $var;?>">
 						<label for="">Nombre</label>
