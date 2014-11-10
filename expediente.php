@@ -77,7 +77,7 @@
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="pacientenuevo.php">Nuevo paciente</a></li>
 							<li class="divider" role="presentation"></li>
-							<li><a href="#">Buscar Paciente</a></li>
+							<li><a href="buscarpaciente.php">Buscar Paciente</a></li>
 						</ul>
 					</li>
 					<!--Fin de Dropown paciente-->

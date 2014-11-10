@@ -72,7 +72,7 @@
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="pacientenuevo.php">Nuevo paciente</a></li>
 							<li class="divider" role="presentation"></li>
-							<li><a href="#">Buscar Paciente</a></li>
+							<li><a href="buscarpaciente.php">Buscar Paciente</a></li>
 						</ul>
 					</li>
 					<!--Fin de Dropown paciente-->
@@ -96,6 +96,186 @@
 		</div>
 	
 </nav>
+<div class="container">
+	<div class="col-sm-3">
+		<h5> Fecha: <?php echo gmdate( "d/m/Y" ); ?></h5>
+	</div>
+	<div class="col-sm-6">
+		<div class="btn-group btn-group-justified" >
+			<div class="btn-group">
+				<button type="submit" class="btn btn-success">Guardar</button>
+			</div>
+			<div class="btn-group">
+				<button type="submit" class="btn btn-success">Nuevo</button>
+			</div>
+			<div class="btn-group">
+				<button type="submit" class="btn btn-success">Expediente</button>
+			</div>
+	
+   		</div>
+	</div>
+	
+</div>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			 <h5>Datos Generales</h5>
+			 <hr color="green" size="3" >
+			<form class="form" action="" method="">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="col-sm-3">
+						        <div class="input-group">
+									<label for="">Nombre</label>
+									<input class="form-control" name="nombre" type="text">
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="input-group">
+									<label for="">Primer Apellido</label>
+									<input class="form-control" name="apellido1" type="text">
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="input-group">
+									<label for="">Segundo Apellido</label>
+									<input class="form-control" type="text" name="apellido2" id="">
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="input-group">
+									<label for="">Fecha de Nacimiento</label>
+									<input class="form-control" type="date" name="fecha">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-2 col-sm-offset-1">
+							<div class="input-group">
+								
+								<label for="">Tipo de Sangre</label>
+								<select class="form-control" name="sangre" id="">
+									<option class="form-control" value=""></option>
+									<option class="form-control" value="ab+">AB+</option>
+									<option class="form-control" value="ab-">AB-</option>
+									<option class="form-control" value="a+">A+</option>
+									<option class="form-control" value="a-">A-</option>
+									<option class="form-control" value="b+">B+</option>
+									<option class="form-control" value="b-">B-</option>
+									<option class="form-control" value="o+">O+</option>
+									<option class="form-control" value="o-">O-</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="input-group">
+								<label for="">Estado Civil</label>
+								<select class="form-control" name="estado" id="">
+									<option class="" value=""></option>
+									<option class="form-control" value="solter@">Solter@</option>
+									<option class="form-control" value="casad@">Casad@</option>
+									<option class="form-control" value="union libre">Union libre</option>
+									<option class="form-control" value="viud@">Viud@</option>
+									<option class="form-control" value="otro">Otro</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="input-group">
+								<label for="">Nacionalidad</label>
+								<select class="form-control" name="lugar" id="">
+									<option class="form-control" value=""></option>
+									<option class="form-control" value="nicaragua">Nicaragua</option>
+									<option class="form-control" value="costa rica">Costa Rica</option>
+									<option class="form-control" value="el salvador">El salvador</option>
+									<option class="form-control" value="hoduras">Honduras</option>
+									<option class="form-control" value="panama">Panama</option>
+									<option class="form-control" value="belice">Belice</option>
+									<option class="form-control" value="guatemala">Guatemala</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="input-group">
+									<label for="">Sexo</label>
+									<select class="form-control" type="text" name="sexo" id="">
+									<option class="form-control" value=""></option>
+									<option class="form-control" value="maculino">Masculino</option>
+									<option class="form-control" value="femenino">Femenino</option>
+									<option class="form-control" value="indefinido">Indefinido</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="input-group">
+								<label for="">Telefono</label>
+								<input class="form-control" type="number" name="telefono" id="" maxlength="8">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="container">
+					<div class="col-sm-3">
+						<div class="input-group">
+							<label for="">Correo Electronico</label>
+							<input class="form-control" name="email" type="email">
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<label for="">Nombre de madre o padre</label>
+						<input class="form-control" name="tutor" type="text" maxlength="50">
+					</div>
+					<div class="col-sm-3">
+						<label for="">Telefono del tutor</label>
+						<input class="form-control" type="text" name="telftut" id="" maxlength="8">
+					</div>
+				</div>
+				<br>
+				<br>
+				<h5>Dirección</h5>
+				<hr>
+				<div class="container">
+					<div class="col-sm-3">
+						<div class="input-group">
+								<label for="">Departamento</label>
+								<input class="form-control" type="text" name="departemento" maxlength="40">
+							</div>
+					</div>
+					<div class="col-sm-3">
+						<label for="">Municipio</label>
+						<input class="form-control" type="text" name="municipio" maxlength="50">
+					</div>
+					<div class="col-sm-3">
+						<label for="">Barrio</label>
+						<input class="form-control" type="text" name="telefono" id="" maxlength="8">
+					</div>
+				</div>
+				<br>
+				<br>
+
+
+				
+				
+			</form>
+		</div>
+	</div>
+	
+</div>
+
+
+
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-ui.js"></script>
