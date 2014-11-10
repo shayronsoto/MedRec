@@ -96,6 +96,60 @@
 		</div>
 	
 </nav>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1 well">
+			<h4 class="text-center">Buscar paciente registrados</h4>
+			<hr>
+			<p>Buscar por el Nombre y el Primer Apellido del paciente </p>
+			<br>
+
+
+			<div class="container">
+			<div class="row">
+					<div class="col-sm-10 col-sm-offset-3">
+						<div class="col-sm-4">
+							<div class="input-group">
+								<div class="input-group-addon">Nombre</div>
+								<input class="form-control" name="nombre" type="text">
+								
+							</div>
+							<br>
+							<div class="input-group">
+								<div class="input-group-addon">Apellido</div>
+								<input class="form-control" name="apellido" type="text">
+							</div>
+						</div>
+						
+						<div class="col-sm-2">
+							<button class="btn btn-primary"  name="bnombre">Buscar</button>
+						</div>
+					</div>
+					</div>
+			</dv>
+			 <br>
+			 <hr>
+			 <p>Buscar al paciente por el numero de resigtro del expediente</p>
+			<divi class="container">
+				<div class="col-sm-10 col-sm-offset-3">
+					<div class="col-sm-4 ">
+						<div class="input-group">
+						<div class="input-group-addon">Expediente</div>
+						<input class="form-control" name="expediente" type="number">
+						</div>
+					</div>
+					<div class="col-sm-2 ">
+						<button class="btn btn-primary" name="bexp">Buscar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-ui.js"></script>

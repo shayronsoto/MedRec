@@ -119,10 +119,13 @@
 <br>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12">
-			 <h5>Datos Generales</h5>
-			 <hr color="green" size="3" >
+		<div class="col-sm-12 well">
+			 <h5 class="text-center">Datos Generales</h5>
+			 
+			 <hr color="black" size="1" >
 			<form class="form" action="" method="">
+				<h5>Expediente</h5>
+				<br>
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12">
@@ -144,7 +147,7 @@
 									<input class="form-control" type="text" name="apellido2" id="">
 								</div>
 							</div>
-							<div class="col-sm-3">
+							<div class="col-sm-2">
 								<div class="input-group">
 									<label for="">Fecha de Nacimiento</label>
 									<input class="form-control" type="date" name="fecha">
@@ -244,7 +247,7 @@
 				</div>
 				<br>
 				<br>
-				<h5>Dirección</h5>
+				<h5 class="text-center">Dirección</h5>
 				<hr>
 				<div class="container">
 					<div class="col-sm-3">
