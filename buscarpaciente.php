@@ -108,7 +108,7 @@
 			<div class="container">
 			<div class="row">
 					<div class="col-sm-10 col-sm-offset-3">
-						<div class="col-sm-4">
+						<div class="col-md-4 col-sm-6">
 							<div class="input-group">
 								<div class="input-group-addon">Nombre</div>
 								<input class="form-control" name="nombre" type="text">
@@ -127,14 +127,14 @@
 					</div>
 					</div>
 			</dv>
-			 <br>
-			 <hr>
-			 <p>Buscar al paciente por el numero de resigtro del expediente</p>
+
 			<divi class="container">
+			<hr>
+				<p>Buscar al paciente por el numero de Cedula</p>
 				<div class="col-sm-10 col-sm-offset-3">
-					<div class="col-sm-4 ">
+					<div class="col-md-4 col-sm-6">
 						<div class="input-group">
-						<div class="input-group-addon">Expediente</div>
+						<div class="input-group-addon">Cedula</div>
 						<input class="form-control" name="expediente" type="number">
 						</div>
 					</div>

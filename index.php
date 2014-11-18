@@ -92,12 +92,12 @@ require('inc/conexion.php');
 						<label for="">Telefono</label>
 						<input type="number" class="form-control" name="telefono" id="" maxlength="8">
 						<label for="">Especialidad</label>
-						<select type="text" class="form-control" name="especialidad" id="">
+						<select type="text" class="form-control" name="especialidad" id="especialidad">
 							<option value=""></option>
-							<option value="">Ginecologia</option>
-							<option value="">Pediatria</option>
-							<option value="">Cardiologia</option>
-							<option value="">Neurologia</option>
+							<option value="Ginecología">Ginecologia</option>
+							<option value="Pediatría">Pediatria</option>
+							<option value="Cardiología">Cardiologia</option>
+							<option value="Neurología">Neurologia</option>
 						</select>
 						<label for="">Contraseña</label>
 						<input type="password" class="form-control" name="contrasena" id="">
