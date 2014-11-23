@@ -2,24 +2,38 @@
 	session_start();
 	$codigo= $_SESSION['codigo'];
 	require('inc/conexion.php');
-	$consulta="SELECT count(no_expediente), max(no_expediente) FROM expediente";
+	$no=$_GET['no'];
+
+	$consulta="SELECT * FROM expediente WHERE no_expediente=$no";
 	$resultado=$mysqli->query($consulta);
-	while ($resul=mysqli_fetch_array($resultado))
-	{
-		
-		$count=$resul['0'];
-		$max=$resul['1'];
 
-		if ($count=='0') {
-			$var='12872';
-			
-		}
-		else
-		{
-			$var=$max+'00001';
-		}
+	while ($fila=$resultado->fetch_assoc()) {
+		$d_exp=$fila['no_expediente'];
+		$d_fecha=$fila['fecha_registro'];
+		$d_cedula=$fila['cedula'];
+		$d_nombre=$fila['nombre'];
+		$d_apellido1=$fila['primer_apellido'];
+		$d_apellido2=$fila['segundo_apellido'];
+		$fechanac=$fila['fecha_nacimiento'];
+
+		$d=explode("-", $fechanac);
+		$d_fechanac_dia=$d[2];
+		$d_fechanac_mes=$d[1];
+		$d_fechanac_ano=$d[0];
+		$d_fechanac=$d_fechanac_dia."/".$d_fechanac_mes."/".$d_fechanac_ano;
+
+		$d_lugar=$fila['lugar_nacimiento'];
+		$d_sangre=$fila['sangre'];
+		$d_sexo=$fila['sexo'];
+		$d_estado=$fila['estado_civil'];
+		$d_ocupacion=$fila['ocupacion'];
+		$d_religion=$fila['religion'];
+		$d_telefono=$fila['telefono'];
+		$d_correo=$fila['correo'];
+		$d_direccion=$fila['direccion'];
+
 	}
-
+	
 ?>
 
 <!DOCTYPE html>
@@ -118,7 +132,13 @@
     <h4 class="visible-sm">Visualización tablets</h4>
     <h4 class="visible-md">Visualización laptop</h4>
     <h4 class="visible-lg">Visualización monitores grandes</h4>
-	
+<?php 
+if ($d_nombre != ' ' and $d_apellido1 !=' ') {
+	echo "<div class='alert alert-success' role='alert'> <strong> Bien hecho! </strong> los datos se han almacedao correctamente </div>" ;
+}
+
+
+?>
 	
 </div>
 <br>
@@ -133,13 +153,13 @@
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="btn-group btn-group-justified" >
 						<div class="btn-group">
-							<button type="submit" class="btn btn-success" name="guardar">Guardar</button>
+							<button type="submit" class="btn btn-success" name="guardar" disabled="disabled">Guardar</button>
 						</div>
 						<div class="btn-group">
-							<button type="submit" class="btn btn-success" name="nuevo" disabled="disabled">Nuevo</button>
+							<button type="submit" class="btn btn-success" name="nuevo">Nuevo</button>
 						</div>
 						<div class="btn-group">
-							<button type="submit" class="btn btn-success" href="" name="ver" disabled="disabled">Expediente</button>
+							<button type="submit" class="btn btn-success" href="" name="ver">Expediente</button>
 						</div>
 
    					</div>
@@ -152,7 +172,7 @@
 							<div class="col-xs-12 col-sm-4 col-md-3">
 						        <div class="input-group">
 						        	<label for="">Expediente</label>
-									<input class="form-control" type="text" value="<?php echo "$var"; ?>" id="expediente" name="no_expediente" maxlength="9" readonly="readonly">
+									<input class="form-control" type="text" value="<?php echo $no ?>" id="expediente" name="no_expediente" maxlength="9" readonly="readonly">
 						        </div>
 						    </div>
 						    <div class="col-xs-12 col-sm-4 col-md-3">
@@ -164,118 +184,91 @@
 						    <div class="col-xs-12 col-sm-4 col-md-3">
 						        <div class="input-group">
 						        	<label for="">N° Cedula</label>
-									<input id="cedula" name="cedula" class="form-control" type="text" value="" maxlength="14" >
+									<input id="cedula" name="cedula" class="form-control" type="text" value="<?php echo $d_cedula;?>" maxlength="14" readonly="readonly">
 						        </div>
 						    </div>
 							<div class="col-xs-12 col-sm-4 col-md-3">
 						        <div class="input-group">
 									<label for="">Nombre</label>
-									<input class="form-control" id="nombre" name="nombre" type="text" maxlength="30" required="required">
+									<input class="form-control" id="nombre" name="nombre" type="text" maxlength="30" required="required" value="<?php echo $d_nombre;?>" readonly="readonly">
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 col-md-3">
 								<div class="input-group">
 									<label for="">Primer Apellido</label>
-									<input class="form-control" id="apellido1" name="apellido1" type="text" maxlength="20" required="required">
+									<input class="form-control" id="apellido1" name="apellido1" type="text" maxlength="20" value="<?php echo $d_apellido1?>" readonly="readonly">
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 col-md-3">
 								<div class="input-group">
 									<label for="">Segundo Apellido</label>
-									<input class="form-control" type="text" id="apellido2" name="apellido2" id="" maxlength="20">
+									<input class="form-control" type="text" id="apellido2" name="apellido2" id="" maxlength="20" value="<?php echo $d_apellido2; ?>" readonly="readonly">
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 col-md-3">
 								<div class="input-group">
 									<label for="">Fecha de Nacimiento</label>
-									<input class="form-control" type="date" id="fecha_nac" name="fecha_nac" required="required">
+									<input class="form-control" type="text" id="fecha_nac" name="fecha_nac" value="<?php echo $d_fechanac; ?>" readonly="readonly">
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-3 col-md-3">
 								<div class="input-group">
 									<label for="">Lugar de Nacimiento</label>
-									<select class="form-control" name="lugar" id="lugar">
-										<option class="form-control" value=""></option>
-										<option class="form-control" value="nicaragua">Nicaragua</option>
-										<option class="form-control" value="Costa Rica">Costa Rica</option>
-										<option class="form-control" value="El salvador">El salvador</option>
-										<option class="form-control" value="Hoduras">Honduras</option>
-										<option class="form-control" value="Panama">Panama</option>
-										<option class="form-control" value="Belice">Belice</option>
-										<option class="form-control" value="Guatemala">Guatemala</option>
-									</select>
+									<input class="form-control" name="lugar" id="lugar" value="<?php echo $d_lugar;  ?>" readonly="readonly" >
+										
 								</div>
 							</div>
 							<div class="col-xs-6 col-sm-3 col-md-2">
 								<div class="input-group">
 									<label for="">Tipo de Sangre</label>
-									<select class="form-control" name="sangre" id="sangre">
-										<option class="form-control" value=""></option>
-										<option class="form-control" value="AB+">AB+</option>
-										<option class="form-control" value="AB-">AB-</option>
-										<option class="form-control" value="A+">A+</option>
-										<option class="form-control" value="A-">A-</option>
-										<option class="form-control" value="B+">B+</option>
-										<option class="form-control" value="B-">B-</option>
-										<option class="form-control" value="O+">O+</option>
-										<option class="form-control" value="O-">O-</option>
-									</select>
+									<input class="form-control" name="sangre" id="sangre" value="<?php echo $d_sangre; ?>" readonly="readonly">
+										
 								</div>
 							</div>
 							<div class="col-xs-6 col-sm-3 col-md-2">
 								<div class="input-group">
 										<label for="">Sexo</label>
-										<select class="form-control" type="text" name="sexo" id="sexo">
-										<option class="form-control" value=""></option>
-										<option class="form-control" value="Maculino">Masculino</option>
-										<option class="form-control" value="Femenino">Femenino</option>
-										<option class="form-control" value="Indefinido">Indefinido</option>
-									</select>
+										<input class="form-control" type="text" name="sexo" id="sexo" value="<?php echo $d_sexo; ?>" readonly="readonly">
+										
 								</div>
 							</div>
 							<div class="col-xs-6 col-sm-3 col-md-2">
 								<div class="input-group">
 									<label for="">Estado Civil</label>
-									<select class="form-control" name="estado" id="estado">
-										<option class="" value=""></option>
-										<option class="form-control" value="Solter@">Solter@</option>
-										<option class="form-control" value="Casad@">Casad@</option>
-										<option class="form-control" value="Union libre">Union libre</option>
-										<option class="form-control" value="Viud@">Viud@</option>
-										<option class="form-control" value="oOro">Otro</option>
-									</select>
+									<input class="form-control" name="estado" id="estado" value="<?php echo $d_estado; ?>" readonly="readonly">
+										
 								</div>
 							</div>
 							<div class="col-xs-6 col-sm-3 col-md-2">
 								<div class="input-group">
 									<label for="">Ocupación</label>
-									<input class="form-control" type="text" name="ocupacion" id="ocupacion" maxlength="50">
+									<input class="form-control" type="text" name="ocupacion" id="ocupacion" maxlength="50" value="<?php echo $d_ocupacion; ?>" readonly="readonly">
 								</div>
 							</div>
 							<div class="col-xs-6 col-sm-3 col-md-2">
 								<div class="input-group">
 									<label for="">Religión</label>
-									<input class="form-control" type="text" name="religion" id="religion" maxlength="30">
+									<input class="form-control" type="text" name="religion" id="religion" maxlength="30" value="<?php echo $d_religion; ?>" readonly="readonly">
 								</div>
 							</div>
 							<div class="col-xs-6 col-sm-3 col-md-2">
 								<div class="input-group">
 									<label for="">Telefono</label>
-									<input class="form-control" type="number" name="telefono" id="telefono" maxlength="8" required="required">
+									<input class="form-control" type="number" name="telefono" id="telefono" maxlength="8" value="<?php echo $d_telefono; ?>" readonly="readonly">
 								</div>
 							</div>
 							
 							<div class="col-xs-12 col-sm-4 col-md-3">
 								<div class="input-group">
 									<label for="">Correo Electronico</label>
-									<input class="form-control" name="email" id="email" type="email">
+									<input class="form-control" name="email" id="email" type="email" value="<?php echo $d_correo; ?>" readonly="readonly">
 								</div>
 							</div>
 							
 							<div class="col-xs-12 col-sm-4 col-md-3">
 								<div class="input-group">
 									<label for="">Dirección</label>
-									<textarea class="form-control" name="direccion" id="direccion" cols="30" rows="3" maxlength="200"></textarea>
+									<textarea class="form-control" name="direccion" id="direccion" cols="30" rows="3" maxlength="200" readonly="readonly"><?php echo $d_direccion; ?></textarea>
 								</div>	
 							</div>
 

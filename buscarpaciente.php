@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link href="css/jquery-ui.css" rel="stylesheet">
-	<link href="css/dataTables.min.css" rel="stylesheet">
+	<link href="css/dataTables.min.css" rel="stylesheet">	
 </head>
 <body>
 <header>
@@ -99,48 +99,55 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1 well">
-			<h4 class="text-center">Buscar paciente registrados</h4>
+			<h3 class="text-center">Buscar paciente registrados</h3>
 			<hr>
-			<p>Buscar por el Nombre y el Primer Apellido del paciente </p>
+			<p class="text-center">Buscar por nombre y primer apellido  </p>
 			<br>
 
 
 			<div class="container">
-			<div class="row">
+				<div class="row">
 					<div class="col-sm-10 col-sm-offset-3">
+						
+						<form method="POST">
 						<div class="col-md-4 col-sm-6">
 							<div class="input-group">
 								<div class="input-group-addon">Nombre</div>
-								<input class="form-control" name="nombre" type="text">
+								<input class="form-control" name="nombre" id="nombre" type="text">
 								
 							</div>
 							<br>
 							<div class="input-group">
 								<div class="input-group-addon">Apellido</div>
-								<input class="form-control" name="apellido" type="text">
+								<input class="form-control" name="apellido" id="apellido" type="text">
 							</div>
 						</div>
 						
 						<div class="col-sm-2">
-							<button class="btn btn-primary"  name="bnombre">Buscar</button>
+							<button class="btn btn-primary"  type="submit"  name="btn1" value="bnombre">Buscar</button>
 						</div>
+						</form>
+							
 					</div>
-					</div>
-			</dv>
-
-			<divi class="container">
+				</div>
+			</div>
 			<hr>
-				<p>Buscar al paciente por el numero de Cedula</p>
-				<div class="col-sm-10 col-sm-offset-3">
-					<div class="col-md-4 col-sm-6">
-						<div class="input-group">
-						<div class="input-group-addon">Cedula</div>
-						<input class="form-control" name="expediente" type="number">
+			<p class="text-center">Buscar por número de Cedula</p>
+			<div class="container">
+				<div class="col-sm-10 col-sm-offset-3 col-xs-12">	
+					
+					<form method="POST">
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="input-group">
+							<div class="input-group-addon">Cedula</div>
+							<input class="form-control" name="cedula" id="cedula" type="text" maxlength="14">
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-2 ">
-						<button class="btn btn-primary" name="bexp">Buscar</button>
-					</div>
+						<div class="col-sm-2 ">
+							<button class="btn btn-primary"  type="submit" name="btn1" value="bcedula">Buscar</button>
+						</div>
+					</form>
+					
 				</div>
 			</div>
 		</div>
@@ -148,7 +155,138 @@
 </div>
 
 
+<?php 
+if(isset($_POST["btn1"]))
+	{
+		$bt=$_POST["btn1"];
+		if($bt=="bnombre")
+		{
+			$bt=$_POST["btn1"];
+			$nom=$_POST['nombre'];
+			$ape=$_POST['apellido'];
 
+	
+			$consulta="SELECT no_expediente, cedula, nombre, primer_apellido, segundo_apellido FROM expediente where nombre='$nom' and primer_apellido='$ape' and usuario_cod_medico='$codigo' " ;
+			$resultado=$mysqli->query($consulta); 
+			echo"
+			<div class='container'>
+			<div class='col-sm-10 col-sm-offset-1'>
+				<div class='panel panel-primary'>
+					<div class='panel-heading'>Expediente</div>
+						<div class='panel-body'>
+							<div class='table-responsive'>
+								<table class='table table-hover'>
+									<thead>
+    									<tr>
+    										<th class='info'>Expediente</th>
+        									<th class='info'>Cedula</th>
+        									<th class='info'>Nombre</th>
+        									<th class='info'>Primer Apellido</th>
+        									<th class='info'>Segundo Apellido</th>
+        									<th class='info'></th>
+        								</tr>
+     			
+    								</thead>
+				";
+				while ($fila=$resultado->fetch_assoc())
+				{
+				$var=$fila['no_expediente'];
+				$var1=$fila['cedula'];
+				$var2=$fila['nombre'];
+				$var3=$fila['primer_apellido'];
+				$var4=$fila['segundo_apellido'];
+		
+				echo "
+		
+				<tbody>
+    				<td>$var</td>
+        			<td>$var1</td>
+        			<td>$var2</td>
+        			<td>$var3</td>
+        			<td>$var4</td>
+        			<td><a class='btn btn-warning' href='consulta.php' title='Expediente'><span class='glyphicon glyphicon-folder-open'></span></a></td>
+    
+    			</tbody>
+				";
+				}  
+	
+			echo"			</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+							
+			";
+		}
+		
+		
+		
+		
+		
+		
+		if($bt=="bcedula")
+		{
+			$bt=$_POST["btn1"];
+			$ced=$_POST['cedula'];
+			$consulta="SELECT no_expediente, cedula, nombre, primer_apellido, segundo_apellido FROM expediente where cedula='$ced' and usuario_cod_medico='$codigo' " ;
+			$resultado=$mysqli->query($consulta); 
+			echo"
+			<div class='container'>
+			<div class='col-sm-10 col-sm-offset-1'>
+				<div class='panel panel-primary'>
+					<div class='panel-heading'>Expediente</div>
+						<div class='panel-body'>
+							<div class='table-responsive'>
+								<table class='table table-hover'>
+									<thead>
+    									<tr>
+    										<th class='info'>Expediente</th>
+        									<th class='info'>Cedula</th>
+        									<th class='info'>Nombre</th>
+        									<th class='info'>Primer Apellido</th>
+        									<th class='info'>Segundo Apellido</th>
+        									<th class='info'></th>
+        								</tr>
+     			
+    								</thead>
+				";
+				while ($fila=$resultado->fetch_assoc())
+				{
+				$var=$fila['no_expediente'];
+				$var1=$fila['cedula'];
+				$var2=$fila['nombre'];
+				$var3=$fila['primer_apellido'];
+				$var4=$fila['segundo_apellido'];
+		
+				echo "
+		
+				<tbody>
+					<tr>
+    					<td>$var</td>
+        				<td>$var1</td>
+        				<td>$var2</td>
+        				<td>$var3</td>
+        				<td>$var4</td>
+        				<td><a class='btn btn-warning ' href='consulta.php' title='Expediente'><span class='glyphicon glyphicon-folder-open'></span></a></td>
+   				 	</tr>
+    			</tbody>
+				";
+				}
+	
+			echo"			</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+							
+			";
+		}
+	}
+ ?>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

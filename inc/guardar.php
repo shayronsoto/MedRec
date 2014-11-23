@@ -13,4 +13,5 @@ $resultado=$mysqli->query($consulta);
 
 header("Location: ../index.php");
 exit();
+
  ?>

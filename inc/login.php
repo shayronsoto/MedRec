@@ -19,7 +19,7 @@ while($fila=$resultado->fetch_assoc())
 	{
 		$_SESSION['nombre']=$nom;
 		$_SESSION['codigo']=$cod;
-		header("Location: ../expediente.php");
+		header("Location: ../pacientenuevo.php");
 		exit();
 	}
 	else
@@ -28,7 +28,7 @@ while($fila=$resultado->fetch_assoc())
 		{
 			$_SESSION['nombre']=$nom;
 			$_SESSION['codigo']=$cod;
-			header("Location: ../expediente.php");
+			header("Location: ../pacientenuevo.php");
 			exit();
 		}
 	}
