@@ -31,6 +31,9 @@ while($fila=$resultado->fetch_assoc())
 			header("Location: ../pacientenuevo.php");
 			exit();
 		}
+		else{
+			header("Location: ../index.php");
+		}
 	}
 
 }

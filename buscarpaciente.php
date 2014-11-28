@@ -11,25 +11,13 @@
 	<meta charset="UTF-8">
 	<title>Medrec</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="">
 	<link href="css/jquery-ui.css" rel="stylesheet">
 	<link href="css/dataTables.min.css" rel="stylesheet">	
 </head>
 <body>
 <header>
-	<div class="container">
-		<div class="row">
-			<div class="text col-sm-6 ">
-				<img class="hidden-xs" class="img-responsive" src="img/logo.png" alt="">
-					<h3 class="texto">MedRec</h3>
-					<h5 class="texto">Medical Record</h5>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
-
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
 	<div class="container-fluid">
 			<!--Menu deplegable-->
 			<div class="navbar-header">
@@ -43,7 +31,7 @@
 				</a>
 				<!--Menu desplegable para el icono del usuario-->
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="">Mi Información</a></li>
+					<li><a href="datosmed.php">Mi Información</a></li>
 					<li role="presentation" class="divider"></li>
 					<li><a href="inc/logout.php">Cerrar Sesión</a></li>
 				</ul>
@@ -153,6 +141,9 @@
 		</div>
 	</div>
 </div>
+	
+</header>
+
 
 
 <?php 
@@ -204,7 +195,7 @@ if(isset($_POST["btn1"]))
         			<td>$var2</td>
         			<td>$var3</td>
         			<td>$var4</td>
-        			<td><a class='btn btn-warning' href='consulta.php' title='Expediente'><span class='glyphicon glyphicon-folder-open'></span></a></td>
+        			<td><a class='btn btn-warning' href='consulta.php?exp=$var ' title='Expediente'><span class='glyphicon glyphicon-folder-open'></span></a></td>
     
     			</tbody>
 				";
@@ -269,7 +260,7 @@ if(isset($_POST["btn1"]))
         				<td>$var2</td>
         				<td>$var3</td>
         				<td>$var4</td>
-        				<td><a class='btn btn-warning ' href='consulta.php' title='Expediente'><span class='glyphicon glyphicon-folder-open'></span></a></td>
+        				<td><a class='btn btn-warning ' href='datosgenerales.php?exp=$var' title='Expediente'><span class='glyphicon glyphicon-folder-open'></span></a></td>
    				 	</tr>
     			</tbody>
 				";

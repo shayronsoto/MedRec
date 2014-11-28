@@ -34,7 +34,7 @@
 </header>
 
 <!-- menu-->
-<nav class="navbar navbar-default" role="navigation" >
+<nav class="navbar navbar-inverse" role="navigation" >
 		<div class="container-fluid">
 			<!--Menu deplegable-->
 			<div class="navbar-header">
@@ -48,7 +48,7 @@
 				</a>
 				<!--Menu desplegable para el icono del usuario-->
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="">Mi Información</a></li>
+					<li><a href="datosmed.php">Mi Información</a></li>
 					<li role="presentation" class="divider"></li>
 					<li><a href="inc/logout.php">Cerrar Sesión</a></li>
 				</ul>

@@ -59,7 +59,7 @@ if (isset($_POST['guardar'])) {
 
 $consulta="INSERT INTO expediente(no_expediente,fecha_registro,cedula,nombre,primer_apellido,segundo_apellido,fecha_nacimiento,lugar_nacimiento,sangre,sexo,estado_civil,ocupacion,edad,religion,telefono,correo,direccion,usuario_cod_medico) VALUES('$no_expediente','$date','$cedula','$nombre','$apellido1','$apellido2','$fecha_nac','$lugar_nac','$sangre','$sexo','$estado','$ocupacion','$edad','$religion','$telefono','$correo','$direccion','$cod_medico')";
 $resultado=$mysqli->query($consulta);
-header("Location: ../pacientedatos.php?no=$no_expediente");
+header("Location: ../pacientedatos.php?exp=$no_expediente");
 exit();
 }
 else
@@ -71,7 +71,7 @@ else
 	else
 	{
 		if (isset($_POST['ver'])){
-			header("Location: ../consulta.php?no=$no_expediente");
+			header("Location: ../datosgenerales.php?exp=$no_expediente");
 			exit();
 		}
 	}

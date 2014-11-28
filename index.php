@@ -38,12 +38,10 @@ require('inc/conexion.php');
 	<header>
 		<div class="container">
 			<div class="row">
-				<div class="text col-sm-6 hidden-xs">
+				<div class="text col-sm-1 hidden-xs">
 					<img class="hidden-xs" class="img-responsive" src="img/logo.png" alt="">
-					<h3 class="texto">MedRec</h3>
-					<h5 class="texto">Medical Record</h5>
 				</div>
-				<div class="text col-xs-8 col-xs-offset-2 hidden-ms">
+				<div class="text col-sm-6 col-xs-8 ">
 					<h3 class="texto">MedRec</h3>
 					<h5 class="texto">Medical Record</h5>
 				</div>

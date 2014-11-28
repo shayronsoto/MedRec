@@ -2,9 +2,9 @@
 	session_start();
 	$codigo= $_SESSION['codigo'];
 	require('inc/conexion.php');
-	$no=$_GET['no'];
+	$exp=$_GET['exp'];
 
-	$consulta="SELECT * FROM expediente WHERE no_expediente=$no";
+	$consulta="SELECT * FROM expediente WHERE no_expediente=$exp";
 	$resultado=$mysqli->query($consulta);
 
 	while ($fila=$resultado->fetch_assoc()) {
@@ -42,25 +42,13 @@
 	<meta charset="UTF-8">
 	<title>Medrec</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="">
 	<link href="css/jquery-ui.css" rel="stylesheet">
 	<link href="css/dataTables.min.css" rel="stylesheet">
 </head>
 <body>
 <header>
-	<div class="container">
-		<div class="row">
-			<div class="text col-sm-6 ">
-				<img class="hidden-xs" class="img-responsive" src="img/logo.png" alt="">
-					<h3 class="texto">MedRec</h3>
-					<h5 class="texto">Medical Record</h5>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
-
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
 	<div class="container-fluid">
 			<!--Menu deplegable-->
 			<div class="navbar-header">
@@ -74,7 +62,7 @@
 				</a>
 				<!--Menu desplegable para el icono del usuario-->
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="">Mi Información</a></li>
+					<li><a href="datosmed.php">Mi Información</a></li>
 					<li role="presentation" class="divider"></li>
 					<li><a href="inc/logout.php">Cerrar Sesión</a></li>
 				</ul>
@@ -126,7 +114,10 @@
 			</div>
 		</div>
 	
-</nav>
+</nav>	
+</header>
+
+
 <div class="container">
 	<h4 class="visible-xs">Visualización celulares</h4>
     <h4 class="visible-sm">Visualización tablets</h4>
@@ -172,7 +163,7 @@ if ($d_nombre != ' ' and $d_apellido1 !=' ') {
 							<div class="col-xs-12 col-sm-4 col-md-3">
 						        <div class="input-group">
 						        	<label for="">Expediente</label>
-									<input class="form-control" type="text" value="<?php echo $no ?>" id="expediente" name="no_expediente" maxlength="9" readonly="readonly">
+									<input class="form-control" type="text" value="<?php echo $exp ?>" id="expediente" name="no_expediente" maxlength="9" readonly="readonly">
 						        </div>
 						    </div>
 						    <div class="col-xs-12 col-sm-4 col-md-3">
