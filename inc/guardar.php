@@ -10,6 +10,7 @@ $contrasena=$_POST['contrasena'];
 
 $consulta="INSERT INTO usuario(cod_medico,nombre,apellido,correo,telefono,especialidad,contrasena) VALUES('$codigo','$nombre','$apellido','$correo','$telefono','$especialidad','$contrasena')";
 $resultado=$mysqli->query($consulta);
+echo "<script>alert('Gracias por utilizar MedRec')</script>";
 
 header("Location: ../index.php");
 exit();

@@ -2,3 +2,10 @@
 	background-color: #FF8B17;
 	color: white;
 }
+.main .content { 
+	display: none;
+}
+body{
+	background-color: #F2F2F2;
+
+}

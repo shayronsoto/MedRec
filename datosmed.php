@@ -4,8 +4,18 @@ $codigo= $_SESSION['codigo'];
 require('inc/conexion.php');
 
 
+$mostrar="SELECT * FROM usuario WHERE cod_medico=$codigo";
+$resultado=$mysqli->query($mostrar);
+while ($fila=$resultado->fetch_assoc()) {
+	$cod=$fila['cod_medico'];
+	$nombre=$fila['nombre'];
+	$apellido=$fila['apellido'];
+	$correo=$fila['correo'];
+	$telefono=$fila['telefono'];
+	$esp=$fila['especialidad'];
+	$contr=$fila['contrasena'];
 
-
+}
  ?>
 
 
@@ -101,35 +111,35 @@ require('inc/conexion.php');
 						<div class="panel-heading">Datos</div>
 						<div class="panel-body">
 							<div class="table-responsive">
-								<form action="">
+								<form action="" method="POST">
 								<table>
 									<tr>
 										<td>Codigo Medico</td>
-										<td></td>
+										<td><?php echo $cod; ?></td>
 									</tr>
 									<tr><td><br></td></tr>
 									<tr>
 										<td>Nombre</td>
-										<td></td>
+										<td><?php echo $nombre; ?></td>
 									</tr>
 									<tr><td><br></td></tr>
 									<tr>
 										<td>Apellido</td>
-										<td></td>
+										<td><?php echo $apellido; ?></td>
 									</tr>
 									<tr><td><br></td></tr>
 									<tr>
 										<td width="160px">Correo Electronico</td>
-										<td><input class="form-control" type="text"></td>
+										<td><input class="form-control" type="email" name="email" value="<?php echo $correo;?>"></td>
 									</tr>
-									<tr><td><br></td></tr>
+									<tr><td><br></otd></tr>
 									<tr>
 										<td>Telefono</td>
-										<td><input class="form-control" type="text"></td>
+										<td><input class="form-control" type="number" name="number" value="<?php echo $telefono?>"></td>
 									</tr>
 								</table>
 								<br>
-								<button class="btn btn-warning"  id="guardar_datos">Guardar</button>
+								<button class="btn btn-warning" name="gtc" type="submit" id="guardar_datos">Guardar</button>
 								</form>
 								
 								
@@ -142,23 +152,24 @@ require('inc/conexion.php');
 					<div class="panel-heading">Contraseña</div>
 					<div class="panel-body">
 						<div class="col-md-8 col-md-offset-2 col-xs-12">
-						<form action="">
+						<form action="" method="POST" >
 							<div class="input-group">
 								<div class="input-group-addon">Contraseña Actual</div>
-								<input class="form-control" type="password">
+								<input class="form-control" name="actual" type="password">
 							</div>
 							<br>
 							<div class="input-group">
 								<div class="input-group-addon">Nueva Contraseña</div>
-								<input class="form-control" type="password">
+								<input class="form-control"  name="newpass" type="password">
+								
 							</div>
 							<br>
 							<div class="input-group">
 								<div class="input-group-addon">Repite Contraseña</div>
-								<input class="form-control" type="password">
+								<input class="form-control" name="rpass" type="password">
 							</div>
 							<br>
-							<button class="btn btn-warning" name="save_pass">Guardar</button>
+							<button class="btn btn-warning" type="submit" name="save_pass">Guardar</button>
 						</form>
 						</div>
 						
@@ -170,7 +181,17 @@ require('inc/conexion.php');
 	</div>
 </div>
 
+<?php 
 
+if (isset($_POST['gtc'])) {
+	$email=$_POST['email'];
+	$numero=$_POST['number'];
+	$mod="UPDATE usuario SET telefono='$numero', correo='$email' WHERE cod_medico=$codigo";
+	$ejec=$mysqli->query($mod);
+	echo "<script>alert('Se modificación se ha realizado')</script>";
+
+}
+?>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-ui.js"></script>

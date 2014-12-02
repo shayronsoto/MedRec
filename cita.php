@@ -90,11 +90,11 @@ $exp=$_GET['exp'];
 <div class="row">
 	<div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
 			<ul id="na" class="nav nav-pills nav-justified">
-				<li ><a class="btn btn-warning navbar-btn active" href="datosgenerales.php?exp=<?php echo $exp; ?>">Datos Generales</a></li>
+				<li ><a class="btn btn-warning navbar-btn " href="datosgenerales.php?exp=<?php echo $exp; ?>">Datos Generales</a></li>
 				<li ><a class="btn btn-warning navbar-btn" href="antecedentes.php?exp=<?php echo $exp; ?>">Antecedentes</a></li>
 				<li ><a class="btn btn-warning navbar-btn" href="consulta.php?exp=<?php echo $exp; ?>">Consultas</a></li>
 				<li ><a class="btn btn-warning navbar-btn " href="#">Estudios</a></li>
-				<li ><a class="btn btn-warning navbar-btn " href="cita.php?exp=<?php echo $exp; ?>" >Citas</a></li>
+				<li ><a class="btn btn-warning navbar-btn active" href="cita.php?exp=<?php echo $exp; ?>" >Citas</a></li>
 			</ul>					
 	</div>
 </div>
@@ -122,7 +122,7 @@ $exp=$_GET['exp'];
 					<tr><td><br></td></tr>
 					<tr>
 						<td valign="top" width="120px">Motivo</td>
-						<td width="200px"><textarea class="form-control" name="" id="" cols="70" rows="3" style="width:520px"></textarea></td>
+						<td width="680px"><textarea class="form-control" name="" id="" cols="70" rows="3" ></textarea></td>
 					</tr>
 
 				</table>
