@@ -22,6 +22,15 @@
 		$d_fechanac_ano=$d[0];
 		$d_fechanac=$d_fechanac_dia."/".$d_fechanac_mes."/".$d_fechanac_ano;
 
+
+		$f=explode("-",$d_fecha);
+		$f_dia=$f[2];
+		$f_mes=$f[1];
+		$f_ano=$f[0];
+		$f_registro=$f_dia."/".$f_mes."/".$f_ano;
+
+
+
 		$d_lugar=$fila['lugar_nacimiento'];
 		$d_sangre=$fila['sangre'];
 		$d_sexo=$fila['sexo'];
@@ -80,14 +89,14 @@
 			<div class="collapse navbar-collapse" id="menu" >
 				<ul class="nav navbar-nav" >
 					<!--agenda-->
-					<li ><a href="#" >Agenda </a></li>
+					<li ><a href="#" ><span class="glyphicon glyphicon-calendar"> </span> Agenda</a></li>
 					<!--Fin de agenda-->
 					
 					<li role="presentation" class="divider"></li>
 					
 					<!--Dropdown de pacientes-->
 					<li class="dropdown" >
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Paciente <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="pacientenuevo.php">Nuevo paciente</a></li>
 							<li class="divider" role="presentation"></li>
@@ -95,11 +104,12 @@
 						</ul>
 					</li>
 					<!--Fin de Dropown paciente-->
-
+					<li role="presentation" class="divider"></li>
+					<li><a href="cita_pacientes.php"><span class="glyphicon glyphicon-edit"></span> Cita</a></li>
 					<li role="presentation" class="divider"></li>
 
 					<li class="dropdown">
-					<a href="#" class="dropdown-toggle"  data-toggle="dropdown">Reportes <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle"  data-toggle="dropdown"><span class="glyphicon glyphicon-list"> </span> Reportes <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">Pacientes</a></li>
 						<li class="divider" role="presentation"></li>
@@ -111,177 +121,146 @@
 					</ul>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="inc/logout.php"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a></li>
+				</ul>
 			</div>
 		</div>
-	
-</nav>	
+</nav>
 </header>
 
 
-<div class="container">
-	<h4 class="visible-xs">Visualización celulares</h4>
-    <h4 class="visible-sm">Visualización tablets</h4>
-    <h4 class="visible-md">Visualización laptop</h4>
-    <h4 class="visible-lg">Visualización monitores grandes</h4>
-<?php 
-if ($d_nombre != ' ' and $d_apellido1 !=' ') {
-	echo "<div class='alert alert-success' role='alert'> <strong> Bien hecho! </strong> los datos se han almacedao correctamente </div>" ;
-}
 
 
-?>
-	
-</div>
+
 <br>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-12 well">
-
-			 <h1 class="text-center" > <small> Datos Generales </small></h1>
-			 
-			 <hr color="black" size="1" >
-			<form class="form" action="inc/guardarpaciente.php" method="POST">
+<div class="col-sm-12">
+	<div class="panel-warning">
+		<div class="panel-heading">Datos de Paciente</div>
+		<br>
+		<div class="panel-body">
+		<form class="form" action="inc/guardarpaciente.php" method="POST">
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="btn-group btn-group-justified" >
 						<div class="btn-group">
-							<button type="submit" class="btn btn-success" name="guardar" disabled="disabled">Guardar</button>
+							<button type="submit" class="btn btn-warning" name="guardar" disabled="disabled">Guardar</button>
 						</div>
 						<div class="btn-group">
-							<button type="submit" class="btn btn-success" name="nuevo">Nuevo</button>
+							<button type="submit" class="btn btn-warning" name="nuevo">Nuevo</button>
 						</div>
 						<div class="btn-group">
-							<button type="submit" class="btn btn-success" href="" name="ver">Expediente</button>
+							<button type="submit" class="btn btn-warning" href="" name="ver">Expediente</button>
 						</div>
 
    					</div>
    					<hr>
 					<br>
 				</div>
+				
+
 				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="col-xs-12 col-sm-4 col-md-3">
-						        <div class="input-group">
-						        	<label for="">Expediente</label>
-									<input class="form-control" type="text" value="<?php echo $exp ?>" id="expediente" name="no_expediente" maxlength="9" readonly="readonly">
-						        </div>
-						    </div>
-						    <div class="col-xs-12 col-sm-4 col-md-3">
-						        <div class="input-group">
-						        	<label for="">Fecha de registro</label>
-									<input id="fecha" name="fecha" class="form-control" type="text" value="<?php echo gmdate("d/m/Y")?>" readonly="readonly">
-						        </div>
-						    </div>
-						    <div class="col-xs-12 col-sm-4 col-md-3">
-						        <div class="input-group">
-						        	<label for="">N° Cedula</label>
-									<input id="cedula" name="cedula" class="form-control" type="text" value="<?php echo $d_cedula;?>" maxlength="14" readonly="readonly">
-						        </div>
-						    </div>
-							<div class="col-xs-12 col-sm-4 col-md-3">
-						        <div class="input-group">
-									<label for="">Nombre</label>
-									<input class="form-control" id="nombre" name="nombre" type="text" maxlength="30" required="required" value="<?php echo $d_nombre;?>" readonly="readonly">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<label for="">Primer Apellido</label>
-									<input class="form-control" id="apellido1" name="apellido1" type="text" maxlength="20" value="<?php echo $d_apellido1?>" readonly="readonly">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<label for="">Segundo Apellido</label>
-									<input class="form-control" type="text" id="apellido2" name="apellido2" id="" maxlength="20" value="<?php echo $d_apellido2; ?>" readonly="readonly">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<label for="">Fecha de Nacimiento</label>
-									<input class="form-control" type="text" id="fecha_nac" name="fecha_nac" value="<?php echo $d_fechanac; ?>" readonly="readonly">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3 col-md-3">
-								<div class="input-group">
-									<label for="">Lugar de Nacimiento</label>
-									<input class="form-control" name="lugar" id="lugar" value="<?php echo $d_lugar;  ?>" readonly="readonly" >
-										
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-									<label for="">Tipo de Sangre</label>
-									<input class="form-control" name="sangre" id="sangre" value="<?php echo $d_sangre; ?>" readonly="readonly">
-										
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-										<label for="">Sexo</label>
-										<input class="form-control" type="text" name="sexo" id="sexo" value="<?php echo $d_sexo; ?>" readonly="readonly">
-										
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-									<label for="">Estado Civil</label>
-									<input class="form-control" name="estado" id="estado" value="<?php echo $d_estado; ?>" readonly="readonly">
-										
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-									<label for="">Ocupación</label>
-									<input class="form-control" type="text" name="ocupacion" id="ocupacion" maxlength="50" value="<?php echo $d_ocupacion; ?>" readonly="readonly">
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-									<label for="">Religión</label>
-									<input class="form-control" type="text" name="religion" id="religion" maxlength="30" value="<?php echo $d_religion; ?>" readonly="readonly">
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-									<label for="">Telefono</label>
-									<input class="form-control" type="number" name="telefono" id="telefono" maxlength="8" value="<?php echo $d_telefono; ?>" readonly="readonly">
-								</div>
-							</div>
-							
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<label for="">Correo Electronico</label>
-									<input class="form-control" name="email" id="email" type="email" value="<?php echo $d_correo; ?>" readonly="readonly">
-								</div>
-							</div>
-							
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<label for="">Dirección</label>
-									<textarea class="form-control" name="direccion" id="direccion" cols="30" rows="3" maxlength="200" readonly="readonly"><?php echo $d_direccion; ?></textarea>
-								</div>	
-							</div>
+					<div class="col-md-5 col-md-offset-1">
+						<div class="input-group">
+							<div class="input-group-addon">Expediente</div>
+							<input class="form-control" type="text" value="<?php echo $exp ?>" id="expediente" name="no_expediente" maxlength="9" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Fecha de Registro</div>
+							<input id="fecha" name="fecha" class="form-control" type="text" value="<?php echo $f_registro?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">N° Cedula</div>
+							<input id="cedula" name="cedula" class="form-control" type="text" value="<?php echo $d_cedula;?>" maxlength="14" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Nombre</div>
+							<input class="form-control" id="nombre" name="nombre" type="text" maxlength="30" required="required" value="<?php echo $d_nombre;?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Primer Apellido</div>
+							<input class="form-control" id="apellido1" name="apellido1" type="text" maxlength="20" value="<?php echo $d_apellido1?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Segundo Apellido</div>
+							<input class="form-control" type="text" id="apellido2" name="apellido2" id="" maxlength="20" value="<?php echo $d_apellido2; ?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Fecha de Nacimiento</div>
+							<input class="form-control" type="text" id="fecha_nac" name="fecha_nac" value="<?php echo $d_fechanac; ?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Telefono</div>
+							<input class="form-control" type="number" name="telefono" id="telefono" maxlength="8" value="<?php echo $d_telefono; ?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Correo Electronico</div>
+							<input class="form-control" name="email" id="email" type="email" value="<?php echo $d_correo; ?>" readonly="readonly">
+						</div>
+						<br>
+					</div>
 
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<input class="form-control hidden" name="cod" id="cod"  value="<?php echo "$codigo"; ?> " maxlength="5">
-								</div>	
-							</div>
 
-							
-							<br>
-							<br>
-							<br>
-						</div><!--Fin col-12-->
+
+					<div class="col-md-5 col-md-offset-1">
+						<div class="input-group">
+							<div class="input-group-addon">Lugar de Nacimiento</div>
+							<input class="form-control" name="lugar" id="lugar" value="<?php echo $d_lugar;  ?>" readonly="readonly" >
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Tipo de Sangre</div>
+							<input class="form-control" name="sangre" id="sangre" value="<?php echo $d_sangre; ?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Sexo</div>
+							<input class="form-control" type="text" name="sexo" id="sexo" value="<?php echo $d_sexo; ?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Estado Civil</div>
+							<input class="form-control" name="estado" id="estado" value="<?php echo $d_estado; ?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Ocupación</div>
+							<input class="form-control" type="text" name="ocupacion" id="ocupacion" maxlength="50" value="<?php echo $d_ocupacion; ?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Religion</div>
+							<input class="form-control" type="text" name="religion" id="religion" maxlength="30" value="<?php echo $d_religion; ?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Dirección</div>
+							<textarea class="form-control" name="direccion" id="direccion" cols="30" rows="3" maxlength="200" readonly="readonly"><?php echo $d_direccion; ?></textarea>					
+						</div>
 						
-
-					</div><!--Fin row-->
-				</div><!--Fin container-->	
+						<input class="form-control hidden" name="cod" id="cod"  value="<?php echo "$codigo"; ?> " maxlength="5">
+						
+						<br>
+					</div>
+				</div>
+				<div class="col-sm-5">
+					
+				</div>
 			</form>
+
+
+
 		</div>
 	</div>
 </div>
+
 
 
 

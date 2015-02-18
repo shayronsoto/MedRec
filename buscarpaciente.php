@@ -49,14 +49,14 @@
 			<div class="collapse navbar-collapse" id="menu" >
 				<ul class="nav navbar-nav" >
 					<!--agenda-->
-					<li ><a href="#" >Agenda </a></li>
+					<li ><a href="#" ><span class="glyphicon glyphicon-calendar"> </span> Agenda</a></li>
 					<!--Fin de agenda-->
 					
 					<li role="presentation" class="divider"></li>
 					
 					<!--Dropdown de pacientes-->
 					<li class="dropdown" >
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Paciente <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="pacientenuevo.php">Nuevo paciente</a></li>
 							<li class="divider" role="presentation"></li>
@@ -64,11 +64,12 @@
 						</ul>
 					</li>
 					<!--Fin de Dropown paciente-->
-
+					<li role="presentation" class="divider"></li>
+					<li><a href="cita_pacientes.php"><span class="glyphicon glyphicon-edit"></span> Cita</a></li>
 					<li role="presentation" class="divider"></li>
 
 					<li class="dropdown">
-					<a href="#" class="dropdown-toggle"  data-toggle="dropdown">Reportes <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle"  data-toggle="dropdown"><span class="glyphicon glyphicon-list"> </span> Reportes <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">Pacientes</a></li>
 						<li class="divider" role="presentation"></li>
@@ -80,71 +81,70 @@
 					</ul>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="inc/logout.php"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a></li>
+				</ul>
 			</div>
 		</div>
-	
 </nav>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1 well">
-			<h3 class="text-center">Buscar paciente registrados</h3>
-			<hr>
-			<p class="text-center">Buscar por nombre y primer apellido  </p>
-			<br>
 
 
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-10 col-sm-offset-3">
-						
-						<form method="POST">
-						<div class="col-md-4 col-sm-6">
-							<div class="input-group">
-								<div class="input-group-addon">Nombre</div>
-								<input class="form-control" name="nombre" id="nombre" type="text">
+	
+</header>
+
+<div class="col-sm-8 col-sm-offset-2">
+<div class="panel panel-warning">
+	<div class="panel-heading">Buscar paciente</div>
+	<div class="panel-body">
+		<div class="col-sm-6 col-sm-offset-3">
+			<div class="panel-warning">
+				<div class="panel-heading">Buscar por nombre y primer apellido</div>
+				<form method="POST">
+					<div class="col-md-8 col-sm-10 col-xs-12">
+					<br>
+						<div class="input-group">
+							<div class="input-group-addon">Nombre</div>
+							<input class="form-control" name="nombre" id="nombre" type="text">
 								
-							</div>
-							<br>
-							<div class="input-group">
-								<div class="input-group-addon">Apellido</div>
-								<input class="form-control" name="apellido" id="apellido" type="text">
-							</div>
 						</div>
-						
-						<div class="col-sm-2">
-							<button class="btn btn-primary"  type="submit"  name="btn1" value="bnombre">Buscar</button>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Apellido</div>
+							<input class="form-control" name="apellido" id="apellido" type="text">
 						</div>
-						</form>
-							
 					</div>
-				</div>
+					<br>
+					<div class="col-sm-2">
+						<button class="btn btn-warning"  type="submit"  name="btn1" value="bnombre">Buscar</button>
+					</div>
+				</form>
 			</div>
-			<hr>
-			<p class="text-center">Buscar por número de Cedula</p>
-			<div class="container">
-				<div class="col-sm-10 col-sm-offset-3 col-xs-12">	
-					
-					<form method="POST">
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="input-group">
+			<br>
+			
+		</div>
+		
+		<div class="col-sm-6 col-sm-offset-3">
+		<br>
+			<div class="panel-warning">
+				<div class="panel-heading">Buscar por numero de cedula</div>
+				<br>
+				<form method="POST">
+					<div class="col-md-8 col-sm-10 col-xs-12">
+						<div class="input-group">
 							<div class="input-group-addon">Cedula</div>
 							<input class="form-control" name="cedula" id="cedula" type="text" maxlength="14">
-							</div>
 						</div>
-						<div class="col-sm-2 ">
-							<button class="btn btn-primary"  type="submit" name="btn1" value="bcedula">Buscar</button>
-						</div>
-					</form>
-					
-				</div>
+					</div>
+					<div class="col-sm-2 ">
+						<button class="btn btn-warning"  type="submit" name="btn1" value="bcedula">Buscar</button>
+					</div>
+				</form>
+
 			</div>
 		</div>
 	</div>
 </div>
-	
-</header>
-
-
+</div>
 
 <?php 
 if(isset($_POST["btn1"]))

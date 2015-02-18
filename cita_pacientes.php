@@ -105,106 +105,21 @@ while ($fila=$resultado->fetch_assoc()) {
 		</div>
 </nav>	
 </header>
-<div class="col-md-12 col-xs-12">
-	<div class="panel-warning">
-		<div class="panel-heading">Informacion del medico</div>
-		<div class="panel-body">
-			<div class="container-fluid">
-				<div class="col-sm-6">
-					<div class="panel panel-warning">
-						<div class="panel-heading">Datos</div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<form action="" method="POST">
-								<table>
-									<tr>
-										<td>Codigo Medico</td>
-										<td><?php echo $cod; ?></td>
-									</tr>
-									<tr><td><br></td></tr>
-									<tr>
-										<td>Nombre</td>
-										<td><?php echo $nombre; ?></td>
-									</tr>
-									<tr><td><br></td></tr>
-									<tr>
-										<td>Apellido</td>
-										<td><?php echo $apellido; ?></td>
-									</tr>
-									<tr><td><br></td></tr>
-									<tr>
-										<td width="160px">Correo Electronico</td>
-										<td><input class="form-control" type="email" name="email" value="<?php echo $correo;?>"></td>
-									</tr>
-									<tr><td><br></otd></tr>
-									<tr>
-										<td>Telefono</td>
-										<td><input class="form-control" type="number" name="number" value="<?php echo $telefono?>"></td>
-									</tr>
-								</table>
-								<br>
-								<button class="btn btn-warning" name="gtc" type="submit" id="guardar_datos">Guardar</button>
-								</form>
-								
-								
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-				<div class="panel panel-warning" id="modal-edicion">
-					<div class="panel-heading">Contraseña</div>
-					<div class="panel-body">
-						<div class="col-md-8 col-md-offset-2 col-xs-12">
-						<form action="" method="POST" >
-							<div class="input-group">
-								<div class="input-group-addon">Contraseña Actual</div>
-								<input class="form-control" name="actual" type="password">
-							</div>
-							<br>
-							<div class="input-group">
-								<div class="input-group-addon">Nueva Contraseña</div>
-								<input class="form-control"  name="newpass" type="password">
-								
-							</div>
-							<br>
-							<div class="input-group">
-								<div class="input-group-addon">Repite Contraseña</div>
-								<input class="form-control" name="rpass" type="password">
-							</div>
-							<br>
-							<button class="btn btn-warning" type="submit" name="save_pass">Guardar</button>
-						</form>
-						</div>
-						
-					</div>
-				</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+<div class="col-md-10 col-md-offset-1 col-xs-12">
+	<nav class="nav navbar-default">
+		<form  class="navbar-form" role="search">
+			<a class="btn btn-warning" href="#"><span class="glyphicon glyphicon-plus-sign"></span> Nueva Cita</a>
+			<a class="btn btn-warning" href="#"><span class="glyphicon glyphicon-search"></span> Ver Cita</a>
+		</form>
+	</nav>
 </div>
 
-<?php 
 
-if (isset($_POST['gtc'])) {
-	$email=$_POST['email'];
-	$numero=$_POST['number'];
-	$mod="UPDATE usuario SET telefono='$numero', correo='$email' WHERE cod_medico=$codigo";
-	$ejec=$mysqli->query($mod);
-	echo "<script>alert('Se modificación se ha realizado')</script>";
-
-}
-?>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/dataTables.min.js"></script>
-
-
-
-
-
 
 
 </body>

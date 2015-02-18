@@ -52,14 +52,14 @@ $exp=$_GET['exp'];
 			<div class="collapse navbar-collapse" id="menu" >
 				<ul class="nav navbar-nav" >
 					<!--agenda-->
-					<li ><a href="#" >Agenda </a></li>
+					<li ><a href="#" ><span class="glyphicon glyphicon-calendar"> </span> Agenda</a></li>
 					<!--Fin de agenda-->
 					
 					<li role="presentation" class="divider"></li>
 					
 					<!--Dropdown de pacientes-->
 					<li class="dropdown" >
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Paciente <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="pacientenuevo.php">Nuevo paciente</a></li>
 							<li class="divider" role="presentation"></li>
@@ -67,11 +67,12 @@ $exp=$_GET['exp'];
 						</ul>
 					</li>
 					<!--Fin de Dropown paciente-->
-
+					<li role="presentation" class="divider"></li>
+					<li><a href="cita_pacientes.php"><span class="glyphicon glyphicon-edit"></span> Cita</a></li>
 					<li role="presentation" class="divider"></li>
 
 					<li class="dropdown">
-					<a href="#" class="dropdown-toggle"  data-toggle="dropdown">Reportes <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle"  data-toggle="dropdown"><span class="glyphicon glyphicon-list"> </span> Reportes <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">Pacientes</a></li>
 						<li class="divider" role="presentation"></li>
@@ -83,23 +84,28 @@ $exp=$_GET['exp'];
 					</ul>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="inc/logout.php"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a></li>
+				</ul>
 			</div>
 		</div>
 </nav>	
 </header>
-<div class="row">
-	<div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
-			<ul id="na" class="nav nav-pills nav-justified">
-				<li ><a class="btn btn-warning navbar-btn active" href="datosgenerales.php?exp=<?php echo $exp; ?>">Datos Generales</a></li>
-				<li ><a class="btn btn-warning navbar-btn" href="antecedentes.php?exp=<?php echo $exp; ?>">Antecedentes</a></li>
-				<li ><a class="btn btn-warning navbar-btn" href="consulta.php?exp=<?php echo $exp; ?>">Consultas</a></li>
-				<li ><a class="btn btn-warning navbar-btn " href="#">Estudios</a></li>
-				<li ><a class="btn btn-warning navbar-btn " href="cita.php?exp=<?php echo $exp; ?>" >Citas</a></li>
-			</ul>					
-	</div>
+
+<div class="col-md-12 col-sm-12  col-xs-12">
+<nav class="nav navbar-default">
+	<form class="navbar-form">
+		<a class="btn btn-warning active" href="datosgenerales.php?exp=<?php echo $exp; ?>">Datos Generales</a>
+		<a class="btn btn-warning " href="antecedentes.php?exp=<?php echo $exp; ?>">Antecedentes</a>
+		<a class="btn btn-warning " href="consulta.php?exp=<?php echo $exp; ?>">Consultas</a>
+		<a class="btn btn-warning " href="#">Estudios</a>
+		<a class="btn btn-warning " href="cita.php?exp=<?php echo $exp; ?>" >Citas</a>
+	</form>
+</nav>
+<br>
+
 </div>
-<br>
-<br>
+
 <?php
 $sql="SELECT * FROM expediente WHERE no_expediente=$exp";
 $resultado=$mysqli->query($sql);
@@ -141,12 +147,12 @@ while ($fila=$resultado->fetch_assoc()) {
 
 ?>
 
-<div class="col-sm-12">
+<div class="col-sm-12 col-xs-12">
 <div class="panel panel-warning">
 	<div class="panel-heading">Expediente: <?php echo "$exp"; ?></div>
 	<div class="panel-body">	
 		
-		<div class="col-sm-6">
+		<div class="col-sm-4 col-xs-12">
 			<div class="panel panel-warning">
 				<div class="panel-heading">Datos Generales</div>
 				<div class="panel-body">
@@ -228,6 +234,45 @@ while ($fila=$resultado->fetch_assoc()) {
 					</table>
 				</div>
 					
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-8 col-xs-12">
+			<div class="panel panel-warning">
+				<div class="panel-heading">Historia Clinica de la enfermedad actual</div>
+				<div class="panel-body">
+				<div class="table-responsive">
+					<table class=" table table-hover">
+						<thead>
+							<th>Id</th>
+							<th>Fecha</th>
+							<th>Motivo</th>
+							<th>Diagnostico</th>
+							<th>Tratamiento</th>
+							<th>Reporte</th>
+						</thead>
+
+						<tbody>
+						<?php 
+							$pa="SELECT * FROM hc_enf_actual WHERE expediente_no_expediente='$exp'";
+							$cn=$mysqli->query($pa);
+							while ($file=$cn->fetch_assoc()) {
+							?>
+								<tr>
+									<td><?php echo $file['id_hc']; ?></td>
+									<td><?php echo $file['fecha']; ?></td>
+									<td><?php echo $file['motivo']; ?></td>
+									<td><?php echo $file['diagnostico']; ?></td>
+									<td><?php echo $file['tratamiento']; ?></td>
+									<td><a class="btn btn-warning" href="reporte/rep_trat.php?exp=<?php echo $exp;?>" title="Tratamiento"><span class="glyphicon glyphicon-file"></span></a> <button class="btn btn-warning" title="Historia Clinica"><span class="glyphicon glyphicon-list-alt"></span></button></td>
+								</tr>
+							<?php }
+
+
+						?>
+						</tbody>
+					</table>
+				</div>
 				</div>
 			</div>
 		</div>

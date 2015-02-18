@@ -34,8 +34,8 @@
 </header>
 
 <!-- menu-->
-<nav class="navbar navbar-inverse" role="navigation" >
-		<div class="container-fluid">
+<nav class="navbar navbar-inverse" role="navigation">
+	<div class="container-fluid">
 			<!--Menu deplegable-->
 			<div class="navbar-header">
 				<!--Nombre del usuario-->
@@ -66,14 +66,14 @@
 			<div class="collapse navbar-collapse" id="menu" >
 				<ul class="nav navbar-nav" >
 					<!--agenda-->
-					<li ><a href="#" >Agenda </a></li>
+					<li ><a href="#" ><span class="glyphicon glyphicon-calendar"> </span> Agenda</a></li>
 					<!--Fin de agenda-->
 					
 					<li role="presentation" class="divider"></li>
 					
 					<!--Dropdown de pacientes-->
 					<li class="dropdown" >
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Paciente <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="pacientenuevo.php">Nuevo paciente</a></li>
 							<li class="divider" role="presentation"></li>
@@ -81,11 +81,12 @@
 						</ul>
 					</li>
 					<!--Fin de Dropown paciente-->
-
+					<li role="presentation" class="divider"></li>
+					<li><a href="cita_pacientes.php"><span class="glyphicon glyphicon-edit"></span> Cita</a></li>
 					<li role="presentation" class="divider"></li>
 
 					<li class="dropdown">
-					<a href="#" class="dropdown-toggle"  data-toggle="dropdown">Reportes <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle"  data-toggle="dropdown"><span class="glyphicon glyphicon-list"> </span> Reportes <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">Pacientes</a></li>
 						<li class="divider" role="presentation"></li>
@@ -97,10 +98,12 @@
 					</ul>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="inc/logout.php"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a></li>
+				</ul>
 			</div>
-			
 		</div>
-	</nav>
+</nav>
 	<!--Fin del Menu-->
 
 <div class="container">

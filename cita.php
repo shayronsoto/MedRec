@@ -52,14 +52,14 @@ $exp=$_GET['exp'];
 			<div class="collapse navbar-collapse" id="menu" >
 				<ul class="nav navbar-nav" >
 					<!--agenda-->
-					<li ><a href="#" >Agenda </a></li>
+					<li ><a href="#" ><span class="glyphicon glyphicon-calendar"> </span> Agenda</a></li>
 					<!--Fin de agenda-->
 					
 					<li role="presentation" class="divider"></li>
 					
 					<!--Dropdown de pacientes-->
 					<li class="dropdown" >
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Paciente <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="pacientenuevo.php">Nuevo paciente</a></li>
 							<li class="divider" role="presentation"></li>
@@ -67,11 +67,12 @@ $exp=$_GET['exp'];
 						</ul>
 					</li>
 					<!--Fin de Dropown paciente-->
-
+					<li role="presentation" class="divider"></li>
+					<li><a href="cita_pacientes.php"><span class="glyphicon glyphicon-edit"></span> Cita</a></li>
 					<li role="presentation" class="divider"></li>
 
 					<li class="dropdown">
-					<a href="#" class="dropdown-toggle"  data-toggle="dropdown">Reportes <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle"  data-toggle="dropdown"><span class="glyphicon glyphicon-list"> </span> Reportes <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">Pacientes</a></li>
 						<li class="divider" role="presentation"></li>
@@ -83,23 +84,26 @@ $exp=$_GET['exp'];
 					</ul>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="inc/logout.php"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a></li>
+				</ul>
 			</div>
 		</div>
 </nav>	
 </header>
-<div class="row">
-	<div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
-			<ul id="na" class="nav nav-pills nav-justified">
-				<li ><a class="btn btn-warning navbar-btn " href="datosgenerales.php?exp=<?php echo $exp; ?>">Datos Generales</a></li>
-				<li ><a class="btn btn-warning navbar-btn" href="antecedentes.php?exp=<?php echo $exp; ?>">Antecedentes</a></li>
-				<li ><a class="btn btn-warning navbar-btn" href="consulta.php?exp=<?php echo $exp; ?>">Consultas</a></li>
-				<li ><a class="btn btn-warning navbar-btn " href="#">Estudios</a></li>
-				<li ><a class="btn btn-warning navbar-btn active" href="cita.php?exp=<?php echo $exp; ?>" >Citas</a></li>
-			</ul>					
-	</div>
-</div>
+<div class="col-md-12 col-sm-12  col-xs-12">
+<nav class="nav navbar-default">
+	<form class="navbar-form">
+		<a class="btn btn-warning " href="datosgenerales.php?exp=<?php echo $exp; ?>">Datos Generales</a>
+		<a class="btn btn-warning " href="antecedentes.php?exp=<?php echo $exp; ?>">Antecedentes</a>
+		<a class="btn btn-warning " href="consulta.php?exp=<?php echo $exp; ?>">Consultas</a>
+		<a class="btn btn-warning " href="#">Estudios</a>
+		<a class="btn btn-warning active" href="cita.php?exp=<?php echo $exp; ?>" >Citas</a>
+	</form>
+</nav>
 <br>
-<div class="col-sm-8 col-sm-offset-2">
+
+<div class="col-sm-8 col-sm-offset-2 col-xs-12">
 <div class="panel panel-warning">
 	<div class="panel-heading">Nueva Cita</div>
 	<div class="panel-body">

@@ -34,7 +34,7 @@
 </head>
 <body>
 <header>
-<nav class="navbar navbar-inverse " role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
 	<div class="container-fluid">
 			<!--Menu deplegable-->
 			<div class="navbar-header">
@@ -66,14 +66,14 @@
 			<div class="collapse navbar-collapse" id="menu" >
 				<ul class="nav navbar-nav" >
 					<!--agenda-->
-					<li ><a href="#" >Agenda </a></li>
+					<li ><a href="#" ><span class="glyphicon glyphicon-calendar"> </span> Agenda</a></li>
 					<!--Fin de agenda-->
 					
 					<li role="presentation" class="divider"></li>
 					
 					<!--Dropdown de pacientes-->
 					<li class="dropdown" >
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Paciente <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="pacientenuevo.php">Nuevo paciente</a></li>
 							<li class="divider" role="presentation"></li>
@@ -81,11 +81,12 @@
 						</ul>
 					</li>
 					<!--Fin de Dropown paciente-->
-
+					<li role="presentation" class="divider"></li>
+					<li><a href="cita_pacientes.php"><span class="glyphicon glyphicon-edit"></span> Cita</a></li>
 					<li role="presentation" class="divider"></li>
 
 					<li class="dropdown">
-					<a href="#" class="dropdown-toggle"  data-toggle="dropdown">Reportes <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle"  data-toggle="dropdown"><span class="glyphicon glyphicon-list"> </span> Reportes <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">Pacientes</a></li>
 						<li class="divider" role="presentation"></li>
@@ -97,198 +98,163 @@
 					</ul>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="inc/logout.php"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a></li>
+				</ul>
 			</div>
 		</div>
-	
 </nav>
 </header>
 
 
-<div class="container">
-	<h4 class="visible-xs">Visualización celulares</h4>
-    <h4 class="visible-sm">Visualización tablets</h4>
-    <h4 class="visible-md">Visualización laptop</h4>
-    <h4 class="visible-lg">Visualización monitores grandes</h4>
-	
-	
-</div>
-<br>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-12 well">
+<div class="col-sm-12">
+	<div class="panel-warning">
+		<div class="panel-heading">Nuevo Paciente</div>
+		<br>
+		<div class="panel-body">
 
-			 <h1 class="text-center" > <small> Datos Generales </small></h1>
-			 
-			 <hr color="black" size="1" >
 			<form class="form" action="inc/guardarpaciente.php" method="POST">
+				
+
+
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="btn-group btn-group-justified" >
 						<div class="btn-group">
-							<button type="submit" class="btn btn-success" name="guardar">Guardar</button>
+							<button type="submit" class="btn btn-warning" name="guardar">Guardar</button>
 						</div>
 						<div class="btn-group">
-							<button type="submit" class="btn btn-success" name="nuevo" disabled="disabled">Nuevo</button>
+							<button type="submit" class="btn btn-warning" name="nuevo" disabled="disabled">Nuevo</button>
 						</div>
 						<div class="btn-group">
-							<button type="submit" class="btn btn-success" href="" name="ver" disabled="disabled">Expediente</button>
+							<button type="submit" class="btn btn-warning" href="" name="ver" disabled="disabled">Expediente</button>
 						</div>
-
+		
    					</div>
-   					<hr>
-					<br>
+   					<br>
+					
 				</div>
+
+	
+
 				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="col-xs-12 col-sm-4 col-md-3">
-						        <div class="input-group">
-						        	<label for="">Expediente</label>
-									<input class="form-control" type="text" value="<?php echo "$var"; ?>" id="expediente" name="no_expediente" maxlength="9" readonly="readonly">
-						        </div>
-						    </div>
-						    <div class="col-xs-12 col-sm-4 col-md-3">
-						        <div class="input-group">
-						        	<label for="">Fecha de registro</label>
-									<input id="fecha" name="fecha" class="form-control" type="text" value="<?php echo gmdate("d/m/Y")?>" readonly="readonly">
-						        </div>
-						    </div>
-						    <div class="col-xs-12 col-sm-4 col-md-3">
-						        <div class="input-group">
-						        	<label for="">N° Cedula</label>
-									<input id="cedula" name="cedula" class="form-control" type="text" value="" maxlength="14" >
-						        </div>
-						    </div>
-							<div class="col-xs-12 col-sm-4 col-md-3">
-						        <div class="input-group">
-									<label for="">Nombre</label>
-									<input class="form-control" id="nombre" name="nombre" type="text" maxlength="30" required="required">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<label for="">Primer Apellido</label>
-									<input class="form-control" id="apellido1" name="apellido1" type="text" maxlength="20" required="required">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<label for="">Segundo Apellido</label>
-									<input class="form-control" type="text" id="apellido2" name="apellido2" id="" maxlength="20">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<label for="">Fecha de Nacimiento</label>
-									<input class="form-control" type="date" id="fecha_nac" name="fecha_nac" required="required">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-3 col-md-3">
-								<div class="input-group">
-									<label for="">Lugar de Nacimiento</label>
-									<select class="form-control" name="lugar" id="lugar">
-										<option class="form-control" value=""></option>
-										<option class="form-control" value="nicaragua">Nicaragua</option>
-										<option class="form-control" value="Costa Rica">Costa Rica</option>
-										<option class="form-control" value="El salvador">El salvador</option>
-										<option class="form-control" value="Hoduras">Honduras</option>
-										<option class="form-control" value="Panama">Panama</option>
-										<option class="form-control" value="Belice">Belice</option>
-										<option class="form-control" value="Guatemala">Guatemala</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-									<label for="">Tipo de Sangre</label>
-									<select class="form-control" name="sangre" id="sangre">
-										<option class="form-control" value=""></option>
-										<option class="form-control" value="AB+">AB+</option>
-										<option class="form-control" value="AB-">AB-</option>
-										<option class="form-control" value="A+">A+</option>
-										<option class="form-control" value="A-">A-</option>
-										<option class="form-control" value="B+">B+</option>
-										<option class="form-control" value="B-">B-</option>
-										<option class="form-control" value="O+">O+</option>
-										<option class="form-control" value="O-">O-</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-										<label for="">Sexo</label>
-										<select class="form-control" type="text" name="sexo" id="sexo">
-										<option class="form-control" value=""></option>
-										<option class="form-control" value="Maculino">Masculino</option>
-										<option class="form-control" value="Femenino">Femenino</option>
-										<option class="form-control" value="Indefinido">Indefinido</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-									<label for="">Estado Civil</label>
-									<select class="form-control" name="estado" id="estado">
-										<option class="" value=""></option>
-										<option class="form-control" value="Solter@">Solter@</option>
-										<option class="form-control" value="Casad@">Casad@</option>
-										<option class="form-control" value="Union libre">Union libre</option>
-										<option class="form-control" value="Viud@">Viud@</option>
-										<option class="form-control" value="oOro">Otro</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-									<label for="">Ocupación</label>
-									<input class="form-control" type="text" name="ocupacion" id="ocupacion" maxlength="50">
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-									<label for="">Religión</label>
-									<input class="form-control" type="text" name="religion" id="religion" maxlength="30">
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="input-group">
-									<label for="">Telefono</label>
-									<input class="form-control" type="number" name="telefono" id="telefono" maxlength="8" required="required">
-								</div>
-							</div>
-							
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<label for="">Correo Electronico</label>
-									<input class="form-control" name="email" id="email" type="email">
-								</div>
-							</div>
-							
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<label for="">Dirección</label>
-									<textarea class="form-control" name="direccion" id="direccion" cols="30" rows="3" maxlength="200"></textarea>
-								</div>	
-							</div>
+					<div class="col-md-5 col-md-offset-1">
+						<div class="input-group">
+							<div class="input-group-addon">Expediente</div>
+							<input class="form-control" type="text" value="<?php echo "$var"; ?>" id="expediente" name="no_expediente" maxlength="9" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Fecha de Registro</div>
+							<input id="fecha" name="fecha" class="form-control" type="text" value="<?php echo gmdate("d/m/Y")?>" readonly="readonly">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">N° Cedula</div>
+							<input id="cedula" name="cedula" class="form-control" type="text" value="" maxlength="14" >
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Nombre</div>
+							<input class="form-control" id="nombre" name="nombre" type="text" maxlength="30" required="required">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Primer Apellido</div>
+							<input class="form-control" id="apellido1" name="apellido1" type="text" maxlength="20" required="required">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Segundo Apellido</div>
+							<input class="form-control" type="text" id="apellido2" name="apellido2"  maxlength="20">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Fecha de Nacimiento</div>
+							<input class="form-control" type="date" id="fecha_nac" name="fecha_nac" required="required">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Telefono</div>
+							<input class="form-control" type="number" name="telefono" id="telefono" maxlength="8" required="required">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Correo Electronico</div>
+							<input class="form-control" name="email" id="email" type="email">
+						</div>
+						<br>
+					</div>
 
-							<div class="col-xs-12 col-sm-4 col-md-3">
-								<div class="input-group">
-									<input class="form-control hidden" name="cod" id="cod"  value="<?php echo "$codigo"; ?> " maxlength="5">
-								</div>	
-							</div>
 
-							
-							<br>
-							<br>
-							<br>
-						</div><!--Fin col-12-->
+
+					<div class="col-md-5 col-md-offset-1">
+						<div class="input-group">
+							<div class="input-group-addon">Lugar de Nacimiento</div>
+							<input class="form-control" type="text" value="">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Tipo de Sangre</div>
+							<select class="form-control" name="sangre" id="sangre">
+									<option class="form-control" value=""></option>
+									<option class="form-control" value="AB+">AB+</option>
+									<option class="form-control" value="AB-">AB-</option>
+									<option class="form-control" value="A+">A+</option>
+									<option class="form-control" value="A-">A-</option>
+									<option class="form-control" value="B+">B+</option>
+									<option class="form-control" value="B-">B-</option>
+									<option class="form-control" value="O+">O+</option>
+									<option class="form-control" value="O-">O-</option>
+								</select>
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Sexo</div>
+							<select class="form-control" type="text" name="sexo" id="sexo">
+								<option class="form-control" value=""></option>
+								<option class="form-control" value="Maculino">Masculino</option>
+								<option class="form-control" value="Femenino">Femenino</option>
+								<option class="form-control" value="Indefinido">Indefinido</option>
+							</select>
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Estado Civil</div>
+							<select class="form-control" name="estado" id="estado">
+								<option class="" value=""></option>
+								<option class="form-control" value="Solter@">Solter@</option>
+								<option class="form-control" value="Casad@">Casad@</option>
+								<option class="form-control" value="Union libre">Union libre</option>
+								<option class="form-control" value="Viud@">Viud@</option>
+								<option class="form-control" value="otro">Otro</option>
+							</select>
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Ocupación</div>
+							<input class="form-control" type="text" name="ocupacion" id="ocupacion" maxlength="50">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Religion</div>
+							<input class="form-control" type="text" name="religion" id="religion" maxlength="30">
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">Dirección</div>
+							<textarea class="form-control" name="direccion" id="direccion" cols="30" rows="3" maxlength="200"></textarea>						
+						</div>
 						
-
-					</div><!--Fin row-->
-				</div><!--Fin container-->	
+						<input class="form-control hidden" name="cod" id="cod"  value="<?php echo "$codigo"; ?> " maxlength="5">
+						
+						<br>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>
-</div>
+</div>				
+
 
 
 
