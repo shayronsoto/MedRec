@@ -264,7 +264,7 @@ while ($fila=$resultado->fetch_assoc()) {
 									<td><?php echo $file['motivo']; ?></td>
 									<td><?php echo $file['diagnostico']; ?></td>
 									<td><?php echo $file['tratamiento']; ?></td>
-									<td><a class="btn btn-warning" href="reporte/rep_trat.php?exp=<?php echo $exp;?>" title="Tratamiento"><span class="glyphicon glyphicon-file"></span></a> <button class="btn btn-warning" title="Historia Clinica"><span class="glyphicon glyphicon-list-alt"></span></button></td>
+									<td><a class="btn btn-warning" href="report_trat.php?exp=<?php echo $exp;?>&id=<?php echo $file['id_hc'];?>" title="Tratamiento"><span class="glyphicon glyphicon-file"></span></a> <button class="btn btn-warning" title="Historia Clinica"><span class="glyphicon glyphicon-list-alt"></span></button></td>
 								</tr>
 							<?php }
 
